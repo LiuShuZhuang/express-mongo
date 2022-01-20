@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const UserModel = require("../../model/managerModel");
+const UserModel = require("../../model/userModel");
 
+router.get("/", (request, response) => {
+  response.send("用户管理");
+});
 router.get("/list", (request, response) => {
   response.send("list");
 });

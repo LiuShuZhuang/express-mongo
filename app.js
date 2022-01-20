@@ -5,6 +5,11 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use((request, response, next) => {
+  //   response.setHeader("Expires", new Date(Date.now() + 1000 * 100));
+  response.setHeader("Cache-Control", "max-age=100000");
+  next();
+});
 app.use("/", routes);
 
 app.listen(8083);

@@ -1,9 +1,17 @@
 const mongoose = require("./core");
-const UserSchema = mongoose.Schema({
-  name: String,
-  age: Number,
+const ManagerSchema = mongoose.Schema({
+  username: String,
+  password: String,
+  email: String,
+  mobile: String,
+  status: {
+    type: Number,
+    default: 1,
+  },
+  login_time: String,
+  add_time: Number,
 });
 
-const UserModel = mongoose.model("User", UserSchema, "user");
+const ManagerModel = mongoose.model("Manager", ManagerSchema, "manager");
 
-module.exports = UserModel;
+module.exports = ManagerModel;
