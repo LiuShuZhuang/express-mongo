@@ -6,15 +6,26 @@ router.get("/", (request, response) => {
   response.send("用户管理");
 });
 router.get("/list", (request, response) => {
-  response.send("list");
-});
-router.post("/add", (request, response) => {
-  let { name, age } = request.body;
-  UserModel.create({
-    name,
-    age,
+  UserModel.find({}, (err, doc) => {
+    if (err) {
+      response.send("查找用户列表失败");
+    } else {
+      response.send(doc);
+    }
   });
-  response.send("添加成功");
+});
+router.get("/add", (request, response) => {
+  // let { username, passworld, email, mobild, status, login_time, add_time } =
+  //   request.body;
+  // UserModel.create({
+  //   username,
+  //   passworld,
+  //   email,
+  //   mobild,
+  //   status,
+  //   login_time,
+  //   add_time,
+  // });
 });
 
 module.exports = router;
